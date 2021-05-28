@@ -1,0 +1,11 @@
+# Ignore artifacts:
+build
+public
+
+# Ignore all HTML files:
+*.html
+*.scss
+*.css
+*.json
+.*
+*.md

@@ -1,0 +1,23 @@
+.table__cell {
+  border-bottom: 1px solid #F0EFF5;
+  border-right: 1px solid #F0EFF5;
+  padding: 11px 14px 12px;
+  vertical-align: middle;
+
+  &--head {
+    color: #000000;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    border: none;
+  }
+
+
+  &--text-right {
+    text-align: right;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}

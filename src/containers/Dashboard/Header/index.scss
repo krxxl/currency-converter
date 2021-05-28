@@ -1,0 +1,18 @@
+.header {
+  background: #676A6F;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    color: #FFFFFF;
+  }
+
+
+  &__nav {
+    display: flex;
+    margin: 0 -5px;
+  }
+}

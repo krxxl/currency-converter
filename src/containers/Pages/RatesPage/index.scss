@@ -1,0 +1,10 @@
+.rates {
+  &__table {
+    margin-top: 20px;
+  }
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}

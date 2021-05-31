@@ -11,7 +11,6 @@ const RatesForm = () => {
   const options = useSelector(selectCurrencies);
   const onSubmit = ({curCurrency}, {setSubmitting}) => {
     const symbols = options.filter(item => item.value !== curCurrency.value).map(item => {return item.value}).toString();
-    console.log(symbols)
     dispatch(changeFilter({base: curCurrency.value, symbols}));
     dispatch(getOneToAll()).then(setSubmitting(false))
   };

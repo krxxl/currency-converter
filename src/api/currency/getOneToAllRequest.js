@@ -11,7 +11,6 @@ export default function getOneToAllRequest({
     },
     transformResponse: [
       (data) => {
-        // console.log(data);
         return Object
             .entries(data.rates)
             .map(entry => ({shortName: entry[0], value: entry[1]}));

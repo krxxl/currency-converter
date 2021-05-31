@@ -1,10 +1,22 @@
+@import "scss/mixins/_all.scss";
+
 .converter {
+  @include media_interval(0, 480px) {
+    margin: 0 -20px;
+  }
   &__flex {
     display: flex;
     margin-top: 20px;
+    @include media_interval(0, 640px) {
+      flex-direction: column;
+    }
   }
   &__currency-from {
     margin-right: 30px;
+    @include media_interval(0, 640px) {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
   }
   &__select {
     margin-top: 5px;
@@ -12,10 +24,17 @@
   &__amount {
     max-width: 250px;
     margin-right: 30px;
+    @include media_interval(0, 640px) {
+      margin-right: 0;
+      margin-top: 20px;
+    }
   }
   &__value {
     display: flex;
     align-items: center;
+    @include media_interval(0, 640px) {
+      margin-top: 20px;
+    }
     span {
       &:last-child {
         margin-left: 40px;

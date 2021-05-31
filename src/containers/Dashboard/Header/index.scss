@@ -1,5 +1,13 @@
+@import "scss/mixins/_all.scss";
+
+$menu_burger_color: #FFFFFF;
+$menu_burger_width: 18px;
+$menu_burger_line_height: 2px;
+$menu_burger_line_space: 3px;
+
 .header {
   background: #676A6F;
+
   &__wrapper {
     display: flex;
     align-items: center;
@@ -14,5 +22,77 @@
   &__nav {
     display: flex;
     margin: 0 -5px;
+    @include media_interval(0, 640px) {
+      flex-direction: column;
+    }
+  }
+
+  &__burger {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-width: $menu_burger_width;
+    height: 3 * $menu_burger_line_height + 2 * $menu_burger_line_space;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: $menu_burger_line_height;
+      background: $menu_burger_color;
+      transition-timing-function: linear;
+      left: 0;
+    }
+
+    &:before {
+      top: 0;
+      box-shadow: $menu_burger_color 0 ($menu_burger_line_height + $menu_burger_line_space) 0 0;
+      transform: translate3d(0, 0, 0) rotate(0deg);
+      transition-property: transform, box-shadow, top;
+      transition-duration: 0.55s, 0.2s, 0.2s;
+      transition-delay: 0s, 0.45s, 0.45s;
+    }
+
+    &:after {
+      top: 100%;
+      transform: translate3d(0, -100%, 0) rotate(0deg);
+      transition-property: transform, top;
+      transition-duration: 0.55s, 0.2s;
+      transition-delay: 0s, 0.45s;
+    }
+
+    @at-root .menu-opened & {
+      &:before {
+        top: 50%;
+        box-shadow: transparent 0 0 0 0;
+        transform: translate3d(0, -50%, 0) rotate(225deg);
+        transition-delay: 0.1s, 0.1s, 0s, 0s;
+      }
+
+      &:after {
+        top: 50%;
+        transition-delay: 0.1s, 0s;
+        transform: translate3d(0, -50%, 0) rotate(315deg);
+      }
+    }
+  }
+
+  &__nav-wrp {
+    position: fixed;
+    width: 100%;
+    height: calc(100vh - 72px);
+    left: 0;
+    top: 72px;
+    padding: 20px;
+    z-index: 51;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include media_interval(0, 768px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 }
+

@@ -6,12 +6,19 @@ import {useSelector, useDispatch} from 'react-redux';
 import {selectCurrencies} from 'reducer/currency/getAvilableCurrencies';
 import Input from 'components/Form/Input';
 import useDebounce from 'hooks/useDebounce';
-import {getCurrencyConverter, selectCurrencyConverter, changeFilter} from 'reducer/currency/getCurrencyConverter';
+import {
+  getCurrencyConverter,
+  selectCurrencyConverter,
+  changeFilter,
+  selectIsLoadingCurrencyConverter
+} from 'reducer/currency/getCurrencyConverter';
+import Loader from 'components/UI/Loader';
 
 const ConverterPage = () => {
   const dispatch = useDispatch();
   const options = useSelector(selectCurrencies);
   const data = useSelector(selectCurrencyConverter);
+  const isLoading = useSelector(selectIsLoadingCurrencyConverter);
 
   const onSubmit = ({from, to, amount}, {setSubmitting}) => {
     dispatch(changeFilter({from: from.value, to: to.value, amount}));
@@ -23,7 +30,7 @@ const ConverterPage = () => {
   }, 750);
 
   useEffect(() => {
-     dispatch(getCurrencyConverter())
+    dispatch(getCurrencyConverter())
   }, [dispatch]);
 
   return (
@@ -65,7 +72,9 @@ const ConverterPage = () => {
                            placeholder='Введите количество'/>
                     <div className='converter__value'>
                       <span>Итого</span>
-                      <span>{data?.result}</span>
+                      <Loader isLoading={isLoading}>
+                        <span>{data?.result}</span>
+                      </Loader>
                     </div>
                   </div>
                 </Form>

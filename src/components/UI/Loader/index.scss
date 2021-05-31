@@ -1,0 +1,30 @@
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #181B19;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  //&__loader {
+  //  width: 100px;
+  //  height: 100px;
+  //  background-color: red;
+  //}
+}
+
+.inside-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(#FFFFFF, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
